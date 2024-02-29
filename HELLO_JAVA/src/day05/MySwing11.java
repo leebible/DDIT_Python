@@ -17,7 +17,7 @@ public class MySwing11 extends JFrame {
 	private JPanel contentPane;
 	private JTextField tf;
 	JTextArea ta;
-	int rand = (int) (Math.random()*99+1);
+	int com;
 
 	/**
 	 * Launch the application.
@@ -69,23 +69,31 @@ public class MySwing11 extends JFrame {
 		ta = new JTextArea();
 		ta.setBounds(40, 101, 170, 338);
 		contentPane.add(ta);
+		
+		setComByRandom();
 	}
 	
 	
+	private void setComByRandom() {
+		com = (int) (Math.random()*100)+1;
+		System.out.println(com);
+		
+	}
+
 	void myclick() {
-		String res_old = ta.getText();
-		int user = Integer.parseInt(tf.getText());
-		int com = 0;
-			com = rand;
-			System.out.println(com);
+		String str_old = ta.getText();
+		String str_mine = tf.getText();
+		int user = Integer.parseInt(str_mine);
+		String txt="";
 			if(user<com) {
-				res_old += user+" UP";
+				txt += user+"\t"+"UP"+"\n";
 			}else if(user>com){
-				res_old += user+" Down";
+				txt += user+"\t"+"Down"+"\n";
 			}else if(user==com){
-				res_old += user + " 정답!";
+				txt += user+"\t"+"정답!"+"\n";
 			}
-			ta.setText(res_old+"\n");
+			ta.setText(str_old+txt);
+			tf.setText("");
 		
 	}
 

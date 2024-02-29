@@ -91,7 +91,6 @@ public class MySwing07 {
 	
 	void myclick() {
 		int arr[] = new int[6];
-		for(int i=0; i<e)
 		int rand = (int) (Math.random()*45)+1;
 		String random = String.valueOf(rand);
 		lbl1.setText(random);
