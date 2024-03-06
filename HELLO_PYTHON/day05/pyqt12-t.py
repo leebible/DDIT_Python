@@ -11,7 +11,6 @@ class WindowClass(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.com = 123
         self.pb.clicked.connect(self.myclick)
         self.setComByRandom()
         
@@ -24,59 +23,58 @@ class WindowClass(QMainWindow, form_class):
             a = arr[0]
             arr[0] = arr[rnd]
             arr[rnd] = a
-        self.com = str(arr[0]) + "" + str(arr[1]) + "" + str(arr[2])
+        self.com = "{}{}{}".format(arr[0],arr[1],arr[2])
         print("com:",self.com)   
        
-    def myclick(self):
-        
+    def myclick(self) :
         mine = self.le.text()
         s = self.getStrike(mine,self.com)
-        txt=""
+        b = self.getBall(mine,self.com)
+        print("여기까진 문제없음")
+        print("s",s,"b",b)
         
-        self.pte.setText(txt)
+        line = mine + "\t" + str(s) + "S" +  str(b) + "B\n"
+        str_old = self.te.toPlainText()
         
+        self.te.setText(str_old+line)
+        self.le.setText("")
+        
+        if s == 3 :
+            QMessageBox.about(self, '정다빕니다.',mine)
+            
         
     def getStrike(self,mine):
         ret = 0
-        m1 = mine.substringData(0,1)
-        m2 = mine.substringData(1,2)
-        m3 = mine.substringData(2,3)
-        c1 = self.com.substringData(0,1)
-        c2 = self.com.substringData(1,2)
-        c3 = self.com.substringData(2,3)
+        m1 = mine[0:1]
+        m2 = mine[1:2]
+        m3 = mine[2:3]
         
-        if m1==c1 :
-            ret+=1
-        elif m2==c2 :
-            ret+=1
-        elif m3==c3 :
-            ret+=1
+        c1 = com[0:1]
+        c1 = com[1:2]
+        c1 = com[2:3]
+        
+        if c1 == m1 : ret +=1
+        if c2 == m2 : ret +=1
+        if c3 == m3 : ret +=1
             
         return ret
         
-    def getBall(self,mine):
+    def getBall(self,mine,com):
         ret = 0
-        m1 = mine.substringData(0,1)
-        m2 = mine.substringData(1,2)
-        m3 = mine.substringData(2,3)
+        m1 = mine[0:1]
+        m2 = mine[1:2]
+        m3 = mine[2:3]
         
-        c1 = self.com.substringData(0,1)
-        c2 = self.com.substringData(1,2)
-        c3 = self.com.substringData(2,3)
+        c1 = self.com[0:1]
+        c1 = self.com[1:2]
+        c1 = self.com[2:3]
         
-        if c1==m2 or c1==m3:
-            ret+=1
-        elif c2==m1 or c2==m3 :
-            ret+=1
-        elif c3==m1 or c3==m2 :
-            ret+=1
+        if c1 == m2 or c1 == m3 : ret +=1
+        if c2 == m1 or c2 == m3 : ret +=1
+        if c3 == m1 or c3 == m2 : ret +=1
             
         return ret
     
-    
-        
-        
-        
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
