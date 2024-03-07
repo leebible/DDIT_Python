@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function myclick(){
+	user = document.getElementById("it_mine").value;
+	com = document.getElementById("it_com");
+	res = document.getElementById("it_result");
+	var rand = Math.random()
+
+	if(rand<0.3) com.value = "가위";
+	else if(rand<0.6) com.value="바위";
+	else com.value ="보";
+	
+	c = com.value;
+
+	if(user==c) res.value = "비김";
+	else if(user=="가위" && c=="보" || user=="바위" && c=="가위" || user=="보" && c=="바위") res.value="이김";
+	else res.value="짐";
+	
+	
+	
+}
+</script>
+</head>
+<body>
+JS08 (가위바위보)<br>
+<table border="1px">
+	<tr>
+		<td>나</td>
+		<td><input type="text" id="it_mine" onkeydown="mydown(event)"></td>
+	</tr>
+	<tr>
+		<td>컴</td>
+		<td><input type="text" id="it_com"></td>
+	</tr>
+	<tr>
+		<td>결과</td>
+		<td><input type="text" id="it_result"></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="실행하기" onclick="myclick()">
+		</td>
+	</tr>
+</table>
+</body>
+</html>

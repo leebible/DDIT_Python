@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.it{
+	width : 40px;
+}
+</style>
+<script>
+function myclick(){
+	var objs=document.getElementsByClassName("it");
+	a = objs[0].value
+	b = objs[1].value
+	aa = parseInt(a)
+	bb = parseInt(b)
+	cc = aa*bb
+	
+	objs[2].value = cc
+	console.log(aa,bb,cc)
+	
+}
+</script>
+</head>
+<body>
+JS03<br>
+<input type="text" class="it">
+*
+<input type="text" class="it">
+<input type="button" value="=" onclick="myclick()">
+<input type="text" class="it">
+
+</body>
+</html>

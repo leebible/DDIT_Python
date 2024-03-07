@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+	text-align : center;
+}
+.btn{
+	width : 50px;
+}
+#btn_call{
+	width : 100px;
+}
+#it{
+	text-align : right
+}
+</style>
+<script type="text/javascript">
+
+/* 
+onclick="myclick(this)로 한다면!"
+function myclick(obj){
+	console.log(obj)
+}
+ */
+function mycall(){
+	 var obj_it = document.getElementById("it")
+	 var str_tel = obj_it.value;
+	 alert("calling\n"+str_tel);
+ }
+ 
+function myclick(obj){
+	 var obj_it=document.getElementById("it");
+	 
+	 var str_new = obj.value
+	 var str_old = obj_it.value;
+	 obj_it.value = str_old + str_new
+}
+
+function fn_init(){
+	var btns = document.getElementsByClassName("btn");
+	for(var i=0; i<btns.length;i++){
+		btns[i].addEventListener("click", function(){
+			myclick(this);
+		});
+	}
+	/* element.addEventListener("click", function(){
+		document.getElementById("")
+	}) */
+}
+
+
+
+</script>
+</head>
+<body onload="fn_init()">
+JS06<br>
+<table border="1px">
+	<tr>
+		<td colspan="3">
+			<input type="text" id="it">
+		</td>
+	</tr>
+	<tr>
+		<td><input type="button" value="1" class="btn"></td>
+		<td><input type="button" value="2" class="btn"></td>
+		<td><input type="button" value="3" class="btn"></td>
+	</tr>
+	<tr>
+		<td><input type="button" value="4" class="btn"></td>
+		<td><input type="button" value="5" class="btn"></td>
+		<td><input type="button" value="6" class="btn"></td>
+	</tr>
+	<tr>
+		<td><input type="button" value="7" class="btn"></td>
+		<td><input type="button" value="8" class="btn"></td>
+		<td><input type="button" value="9" class="btn"></td>
+	</tr>
+	<tr>
+		<td><input type="button" value="0" class="btn"></td>
+		<td colspan="2">
+			<input type="button" value="☏" id="btn_call" onclick="mycall()">
+		</td>
+	</tr>
+</table>
+</body>
+</html>

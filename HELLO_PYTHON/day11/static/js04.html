@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#it{
+	width : 40px;
+}
+#mydiv{
+	height : 300px;
+}
+</style>
+<script>
+function myclick(){
+	var obj_div = document.getElementById('mydiv')
+	var obj_it = document.getElementById('it')
+	
+	obj_div.innerHTML="";
+	var dan = obj_it.value;
+	idan = parseInt(dan);
+	
+	for(i=1; i<10; i++){
+		res=idan*i;
+		txt = idan+"*"+i+"="+res+"<br>";
+		obj_div.innerHTML += txt;
+	}
+}
+</script>
+</head>
+<body>
+<table border="1px">
+	<tr>
+		<td>출력단수:</td>
+		<td>
+			<input type="text" id="it">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="출력하기" onclick="myclick()">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<div id="mydiv"></div>
+		</td>
+	</tr>
+
+</table>
+</body>
+</html>

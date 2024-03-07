@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#it_first, #it_last{
+	width : 40px;
+}
+</style>
+<script>
+function getStar(cnt){
+	var ret = "";
+	for(var i=0;i<cnt;i++){
+		ret += "★";
+	}
+	ret +="\n"
+	return ret;
+}
+
+function myclick(){
+	var obj_f = document.getElementById("it_first").value;
+	var obj_l = document.getElementById("it_last").value;
+	var obj_ta = document.getElementById("ta");
+	
+	var f = parseInt(obj_f)
+	var l = parseInt(obj_l)
+	
+	var txt = "";
+	for(var i=f; i<=l; i++){
+		txt += getStar(i);	
+	}
+	obj_ta.innerHTML = txt;
+	
+	
+}
+</script>
+</head>
+<body>
+JS07<br>
+<table border="1px">
+	<tr>
+		<td>첫 별수</td>
+		<td>
+			<input type="text" id="it_first">
+		</td>
+	</tr>
+	<tr>
+		<td>끝 별수</td>
+		<td>
+			<input type="text" id="it_last">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" value="별그리기" onclick ="myclick()">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<textarea id="ta" rows="20" cols="20">
+			</textarea>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
