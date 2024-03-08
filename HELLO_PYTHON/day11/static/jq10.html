@@ -11,6 +11,7 @@
 	height : 300px;
 }
 </style>
+<script src="jquery-3.7.1.js"></script>
 <script type="text/javascript">
 var com = "123";
 
@@ -49,17 +50,15 @@ function getB(com,mine){
 }
 
 function myclick(){
-	var obj_it = document.getElementById("it");
-	var obj_div = document.getElementById("mydiv");
+	var mine = $("#it").val();
 	
-	var mine = obj_it.value;
 	var s = getS(com,mine);
 	var b = getB(com,mine);
 	
 	var line = mine+"\t"+s+"S"+b+"B"+"<br>";
-	var str_old = obj_div.innerHTML;
-	obj_div.innerHTML = str_old+line;
-	obj_it.value="";
+	var str_old = $("#mydiv").html();
+	$("#mydiv").html(str_old+line);
+	$("#it").val("");
 	
 	if(s==3){
 		alert("정답입니다.\n"+mine);
@@ -79,6 +78,12 @@ function myinit(){
 	com = arr[0]+""+arr[1]+""+arr[2];
 	console.log("com"+com);
 }
+
+$(document).ready(function(){
+	$("#btn").bind("click",function(event){
+		myclick();
+	})
+})
 </script>
 </head>
 <body onload="myinit()">
@@ -92,7 +97,7 @@ JS10<br>
 	</tr>
 	<tr>
 		<td colspan="2">
-			<input type="button" value="맞춰보기" onclick="myclick()">
+			<input type="button" value="맞춰보기" id="btn">
 		</td>
 	</tr>
 	<tr>
