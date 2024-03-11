@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.7.1.js"></script>
+<script type="text/javascript">
+function myclick(){
+var postdata = {
+		'menu' : '짬뽕'
+}
+	$.ajax({
+		type:'POST',
+		url : '/ajax',
+		data : JSON.stringify(postdata),
+		dataType : 'JSON',
+		contentType : "application/json",
+		success : function(data){
+			alert(data.result2)
+		}
+	})
+}
+
+
+</script>
+</head>
+<body>
+AJAX
+<a href="javascript:myclick()">ajax</a>
+<div></div>
+</body>
+</html>  
